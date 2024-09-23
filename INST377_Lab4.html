@@ -1,0 +1,104 @@
+<!-- Braedan Henegar - Lab 4 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INST377 Lab 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+        .section {
+            border: 1px solid black;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        form input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="pageHeading">Welcome to INST377 Lab 4</h1>
+
+    <!-- Alert Me Section -->
+    <div class="section">
+        <h2>Alert Me Section</h2>
+        <form id="alertForm">
+            <label for="name">Enter your name:</label>
+            <input type="text" id="name" required>
+            <button type="button" onclick="alertMe()">Alert Me</button>
+        </form>
+    </div>
+
+    <!-- change color -->
+    <div class="section">
+        <h2>Change Color Section</h2>
+        <button type="button" onclick="changeColor()">Change Color</button>
+    </div>
+
+    <!-- text tester -->
+    <div class="section">
+        <h2>Text Tester Section</h2>
+        <form id="textTesterForm">
+            <label for="testText">Enter text to validate:</label>
+            <input type="text" id="testText">
+            <button type="button" onclick="validateText()">Validate Text</button>
+        </form>
+    </div>
+
+    <!-- add text -->
+    <div class="section">
+        <h2>Add Text Section</h2>
+        <button type="button" onclick="addText()">Add Text</button>
+    </div>
+
+    <script>
+        // Alert Me function
+        function alertMe() {
+            const name = document.getElementById('name').value;
+            if (name) {
+                alert(`Hi ${name}!`);
+            }
+        }
+
+        // change color
+        let isBlue = true;
+        function changeColor() {
+            if (isBlue) {
+                document.body.style.backgroundColor = 'green';
+            } else {
+                document.body.style.backgroundColor = 'blue';
+            }
+            isBlue = !isBlue;
+        }
+
+        // validate text
+        function validateText() {
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            const testText = document.getElementById('testText').value;
+            if (validation.test(testText)) {
+                alert('Text contains special characters!');
+            } else {
+                alert('Text is valid!');
+            }
+        }
+
+        // add text
+        function addText() {
+            const heading = document.getElementById('pageHeading');
+            heading.textContent += ' Add Text';
+        }
+    </script>
+</body>
+</html>
